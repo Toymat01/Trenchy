@@ -1,10 +1,14 @@
 import { Autorenew, AutorenewOutlined, Comment, CommentOutlined, FavoriteOutlined, MusicNote, Photo, Redo, Replay, Send, Share, VideoCameraFront } from '@mui/icons-material'
 import { Avatar, Box, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Divider, IconButton, InputBase, Modal, Paper, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { useStyle } from './Style'
+import { useParams } from 'react-router-dom'
 
 const Feeds = () => {
   const classes = useStyle()
+  const navigate = useNavigate()
+  const {id} = useParams()
 
   const [modal, setModal] = useState(false)
 
@@ -17,7 +21,7 @@ const Feeds = () => {
 
   return (
     <div>
-      <Card sx={{borderRadius:6, margin:'5px 0'}} >
+      <Card sx={{borderRadius:6, margin:'5px 0'}} onClick={() => navigate(`/feeds/${id}`)}>
         <CardHeader 
           title="How to be Good"
           subheader="september 13 2022"
