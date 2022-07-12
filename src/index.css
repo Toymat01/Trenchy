@@ -3,7 +3,6 @@
 body{
   font-family: 'Roboto';
   overflow-x: hidden;
-  max-width: 400px;
+  background: #fffcf6;
+  color: #011627;
 }
-
-

@@ -1,13 +1,19 @@
-import { purple } from "@mui/material/colors";
+
+import { createTheme } from "@mui/material";
 import { makeStyles } from "@mui/styles"
-import { createTheme } from '@mui/system';
 
 
 
-const { palette} = createTheme();
+
+
 const theme = createTheme({
   palette: {
-   main:palette.purple
+    appbarColor:{
+      main:"#5b6260"
+    },
+    footerColor:{
+      main:"#fdfffc"
+    }
   },
 });
 
@@ -15,42 +21,56 @@ const useStyle = makeStyles((theme) =>{
   return{
     profileOpen:{
       display:'block', 
-      background:"black",
-      border:"2px solid black",
+      border:"2px solid white",
       borderRadius:"10px",
       position:"absolute",
-      right:20,
-      top:-100
-    },
-    profile:{
-      position: 'fixed',
-      width: 200,
-      top: '80%',
-      left: '100%',
-      transform: 'translate(-50%, -50%)',
-      p: 1,
-      backgroundColor: 'black',
-      borderRadius:6,
+      background:"white",
+      bottom:-20,
+      left:0
     },
     profileClose:{
       display:'none',
-      transition:"ease 0.5s"
     }, 
     menu:{
         display:'none'
     },
     page:{
       width:'100%',
-      padding:"70px",
-      marginTop:"60px"
-
+      margin:"60px auto",
+      maxWidth:"500px",
     }, 
-    layout:{
-      backgroundColor:"#817c7f"
-    },
     appbar:{
-      background:purple,
-      color:'#fff', 
+        color:"#fdfffc",
+        justifyContent:"center"
+    },
+    footer:{
+        justifyContent:"center",
+        color:'#5b6260'
+    },
+    feeds:{
+      background:"white",
+      margin:"0 auto",
+    },
+    userInfo:{
+      display:"flex",
+      alignItems:"center"
+    },
+    paper:{
+      background:'#f6f7f8',
+      position:'fixed',
+      height:'100%',
+      width:'100px',
+      left:0,
+      top:50,
+      padding:20
+    },
+    modal:{
+      position:'absolute',
+      top:'60%',
+      left:0,
+      width:'100%',
+      boxShadow:24,
+      padding:'10px 0',
     }
 
   }

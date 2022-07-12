@@ -1,28 +1,29 @@
-import { AddComment, Comment, ExpandMore, ExpandMoreOutlined, FavoriteOutlined, MoreVert, Share } from '@mui/icons-material'
-import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, Collapse, Container, Divider, IconButton, Typography } from '@mui/material'
-import { purple, red } from '@mui/material/colors'
-import { Box } from '@mui/system'
-import React, { useState } from 'react'
+import { Box, Container, Divider, Stack, Typography, } from '@mui/material'
+import Feeds from './Feeds'
+// import { useState } from 'react'
+import { useStyle } from './Style'
 
 const Mainbar = () => {
 
-  const [like, setLike] = useState(false)
+  // const [like, setLike] = useState(false);
+  const classes = useStyle()
 
 
 
   return (
-    <Container className='mainbar'>
-      <Box sx={{display:'flex'}}>
-        <Avatar  >T</Avatar>
-        <Box>
-          <Typography>UserNAme</Typography>
-          <Divider/>
-          <Typography>useremail</Typography>
-
-        </Box>
-      </Box>
-        
-    </Container>
+            <Stack> 
+              <Box sx={{ position:'fixed', top:53,left:0, width:'100%', textAlign:'center', padding:'10px 0',zIndex:1, background:'#f6f7f8', }}>
+                <Typography variant="h5">FEEDS</Typography>
+                <Divider light={false}/>
+              </Box>
+              <Box className={classes.page}>
+              <Feeds />
+              <Feeds />
+              <Feeds />
+              <Feeds />
+              </Box>
+            </Stack> 
+          
   )
 }
 
