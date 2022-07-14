@@ -1,5 +1,5 @@
-import { Autorenew, AutorenewOutlined, Comment, CommentOutlined, FavoriteOutlined, MusicNote, Photo, Redo, Replay, Send, Share, VideoCameraFront } from '@mui/icons-material'
-import { Avatar, Box, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Divider, IconButton, InputBase, Modal, Paper, TextField, Typography } from '@mui/material'
+import { AutorenewOutlined,  CommentOutlined, FavoriteOutlined, MusicNote, Photo,  Send,  VideoCameraFront } from '@mui/icons-material'
+import { Avatar, Box, Card, CardActions, CardContent, CardHeader, CardMedia, Divider, IconButton, Modal, Paper, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useStyle } from './Style'
@@ -21,31 +21,35 @@ const Feeds = () => {
 
   return (
     <div>
-      <Card sx={{borderRadius:6, margin:'5px 0'}} onClick={() => navigate(`/feeds/${id}`)}>
-        <CardHeader 
-          title="How to be Good"
-          subheader="september 13 2022"
-          avatar={<Avatar>T</Avatar>}
-        />
-        <CardMedia image='/img/iphone.jpg' component="img" height="190" />
-        <CardContent>
-        <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, omnis?</Typography>
-        </CardContent>
-        <CardActions>
-          <IconButton>
-            <FavoriteOutlined/>
-          </IconButton>
-          <Typography>3</Typography>
-          <IconButton>
-            <AutorenewOutlined/>
-          </IconButton>
-          <Typography>7</Typography>
-          <IconButton onClick={handleModalOpen}>
-            <CommentOutlined/>
-          </IconButton>
-          <Typography>5</Typography>
-        </CardActions>
-      </Card>
+      <Box > 
+        <Card sx={{borderRadius:6, margin:'10px 0'}} >
+        <div onClick={() => navigate(`/feeds/${id}`)}>
+            <CardHeader 
+              title="How to be Good"
+              subheader="september 13 2022"
+              avatar={<Avatar>T</Avatar>}
+            />
+            <CardMedia image='/img/iphone.jpg' component="img" height="190" />
+            <CardContent>
+            <Typography>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, omnis? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Neque ad delectus minima odio. Assumenda commodi ad impedit omnis hic atque, nemo saepe pariatur. Odio corrupti reprehenderit culpa ipsa? Nemo, error!</Typography>
+            </CardContent>
+        </div>
+          <CardActions>
+            <IconButton>
+              <FavoriteOutlined/>
+            </IconButton>
+            <Typography>3</Typography>
+            <IconButton>
+              <AutorenewOutlined/>
+            </IconButton>
+            <Typography>7</Typography>
+            <IconButton onClick={handleModalOpen}>
+              <CommentOutlined/>
+            </IconButton>
+            <Typography>5</Typography>
+          </CardActions>
+        </Card>
+      </Box>
       <Divider sx={{margin:'10px 0'}}  />
       <Modal
          open={modal}

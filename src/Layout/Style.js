@@ -71,8 +71,19 @@ const useStyle = makeStyles((theme) =>{
       width:'100%',
       boxShadow:24,
       padding:'10px 0',
+    },
+    feedPage:{
+      width:'100%',
+      marginTop:'60px',
+      marginBottom:'100px',
+      maxWidth:"500px",
+    }, 
+    feedInput:{
+      width:'340px', 
+      border:'solid 2px #fff5e7',
+      borderRadius:'20px',
+      padding:'5px'
     }
-
   }
 })
 
