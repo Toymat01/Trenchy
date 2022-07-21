@@ -1,4 +1,5 @@
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Dashboard from './components/Dashboard';
 import FeedContent from './components/FeedContent';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
@@ -15,6 +16,7 @@ function App() {
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
         <Route path='/feeds/:id' element={<FeedContent/>} />
+        <Route path='/dashboard' element={<Dashboard />} />
       </Routes>
     </Navbar>
    </Router>

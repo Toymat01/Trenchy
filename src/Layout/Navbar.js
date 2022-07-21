@@ -9,10 +9,6 @@ import { useNavigate } from "react-router-dom"
 
 const accountMenu =[
   {
-    name:'Profile',
-    path:'/profile',
-  },
-  {
     name:'Sign Up',
     path:'/signup',
   },
@@ -40,7 +36,7 @@ const Navbar = ({children}) => {
   const drawerItems =[
     {
       name:'Profile',
-      path:'/profile',
+      path:'/',
       icon:<AccountBox />
     },
     {
