@@ -1,18 +1,17 @@
 import { AutorenewOutlined,  CommentOutlined, FavoriteOutlined, MusicNote, Photo,  Send,  VideoCameraFront } from '@mui/icons-material'
 import { Avatar, Box, Card, CardActions, CardContent, CardHeader, CardMedia, Divider, IconButton, Modal, Paper, TextField, Typography } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useStyle } from './Style'
-import useToken from '../components/useToken'
+import useFetch from '../useFetch'
 
-const axios = require('axios')
 
 const Feeds = () => {
   const classes = useStyle()
   const navigate = useNavigate()
-  const[posts, setPosts] = useState(null);
-  // const [isLoading, setIsLoading] = useState(false)
-  const {token} = useToken()
+  const {posts, error, isLoading} = useFetch('https://trenchy-api.herokuapp.com/post/posts');
+
+
  
   // handling modals
   const [modal, setModal] = useState(false)
@@ -23,26 +22,13 @@ const Feeds = () => {
     setModal(false)
   }
 
-  // fetching posts
-  useEffect(() => {
- if(token){
-  axios.get('https://trenchy-api.herokuapp.com/post/posts/',{
-    headers:{'Authorization':`Bearer ${token}`}
-  })
-  .then(res => {
-    setPosts(res.data.data)
-  })
-  .catch(err => {console.log(err.message)})
- }
-  },[token])
 
-  if(!posts){
-    return(<Typography>Fetching Posts...</Typography>)
-  }
 
   return (
     <div>
       <Box > 
+      {error && <Typography>{error}</Typography>}
+      {isLoading && <Typography>Fetching posts...</Typography>}
       {posts && posts.map(post => ( 
         <Card sx={{borderRadius:6, margin:'10px 0'}}  key={post._id}>
                   <div  key={post.modified_date} onClick={() => navigate(`/posts/${post._id}`)}>
