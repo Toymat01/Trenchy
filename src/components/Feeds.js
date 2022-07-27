@@ -2,7 +2,7 @@ import { AutorenewOutlined,  CommentOutlined, FavoriteOutlined, MusicNote, Photo
 import { Avatar, Box, Card, CardActions, CardContent, CardHeader, CardMedia, Divider, IconButton, Modal, Paper, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useStyle } from './Style'
+import { useStyle } from '../Layout/Style'
 import useFetch from '../useFetch'
 
 
@@ -30,32 +30,32 @@ const Feeds = () => {
       {error && <Typography>{error}</Typography>}
       {isLoading && <Typography>Fetching posts...</Typography>}
       {posts && posts.map(post => ( 
-        <Card sx={{borderRadius:6, margin:'10px 0'}}  key={post._id}>
-                  <div  key={post.modified_date} onClick={() => navigate(`/posts/${post._id}`)}>
+            <Card sx={{borderRadius:6, margin:'10px 0'}}  key={post._id}>
+                    <div  key={post.modified_date} onClick={() => navigate(`/posts/${post._id}`)}>
                       <CardHeader 
                         title={post.writer}
                         subheader={post.modified_date}
-                        avatar={<Avatar>T</Avatar>}
-                      />
+                        avatar={<Avatar>{post.writer[0]}</Avatar>}
+                        />
                       <CardMedia image='/img/iphone.jpg' component="img" height="190" />
                       <CardContent>
                         <Typography>{post.post}</Typography>
                       </CardContent>
-                  </div>
-              <CardActions>
-                <IconButton >
-                  <FavoriteOutlined />
-                </IconButton>
-                <Typography>2</Typography>
-                <IconButton>
-                  <AutorenewOutlined/>
-                </IconButton>
-                <Typography>7</Typography>
-                <IconButton onClick={handleModalOpen}>
-                  <CommentOutlined />
-                </IconButton>
-                <Typography>5</Typography>
-              </CardActions>
+                    </div>
+                    <CardActions>
+                      <IconButton >
+                        <FavoriteOutlined />
+                      </IconButton>
+                      <Typography>2</Typography>
+                      <IconButton>
+                        <AutorenewOutlined/>
+                      </IconButton>
+                      <Typography>7</Typography>
+                      <IconButton onClick={handleModalOpen}>
+                        <CommentOutlined />
+                      </IconButton>
+                      <Typography>5</Typography>
+                    </CardActions>
             </Card>
       ))}     
       </Box>

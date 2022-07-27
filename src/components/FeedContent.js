@@ -52,7 +52,6 @@ const FeedContent = () => {
           <Divider />
         <Box sx={{margin:'10px 0'}}>
           <Comments />
-          <Comments />
         </Box>
       </Container>
     )

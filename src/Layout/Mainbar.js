@@ -1,13 +1,9 @@
-import { Box, Container, Divider, Stack, Typography, } from '@mui/material'
-import useToken from '../components/useToken'
-import Feeds from './Feeds'
-// import { useState } from 'react'
+import { Box,  Stack } from '@mui/material'
+import Feeds from '../components/Feeds'
+
 import { useStyle } from './Style'
 
 const Mainbar = () => {
-
-  // const [like, setLike] = useState(false);
-  const {token} = useToken();
   const classes = useStyle()
 
 
