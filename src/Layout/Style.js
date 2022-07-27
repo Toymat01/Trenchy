@@ -21,12 +21,7 @@ const useStyle = makeStyles((theme) =>{
   return{
     profileOpen:{
       display:'block', 
-      border:"2px solid white",
-      borderRadius:"10px",
-      position:"absolute",
       background:"white",
-      bottom:-20,
-      left:0
     },
     profileClose:{
       display:'none',

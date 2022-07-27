@@ -15,7 +15,7 @@ function App() {
         <Route path='/' element={<Mainbar />} />
         <Route path='/signup' element={<SignUp />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/feeds/:id' element={<FeedContent/>} />
+        <Route path='/posts/:id' element={<FeedContent/>} />
         <Route path='/dashboard' element={<Dashboard />} />
       </Routes>
     </Navbar>

@@ -2,27 +2,31 @@ import {  Lock } from '@mui/icons-material'
 import { Button, Stack, TextField, Typography } from '@mui/material'
 import { Box, Container } from '@mui/system'
 import React, {  useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
 const [name, setName] =useState('');
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
-const [profile, setProfile] =useState('');
 const [confirmPwd, setConfirmPwd] = useState('')
+const navigate = useNavigate()
 const axios = require('axios');
 
 
 const handleClick =() =>{
-  const user = {name, password, profile, confirmPwd}
+  const user = {name, password, confirmPwd, email}
     axios.post('https://trenchy-api.herokuapp.com/auth/signup',{
         headers:{'Content-Type': 'application/json'},
         body:JSON.stringify(user),
         name:name,
         password:password,
-        profile:profile,
-        confirmPwd:'test1234'
+        email:email,
+        confirmPwd:confirmPwd,
     })
-    .then((res) =>console.log(res))
+    .then(() =>{
+        navigate('/login')
+    })
+    .catch((err) => alert(err.message))
 }
   return (
       <Container>
@@ -34,7 +38,8 @@ const handleClick =() =>{
           <TextField  label="Name"  value={name} onChange={(e) =>setName(e.target.value)}/>
           <TextField label="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           <TextField label="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          <Button variant='contained' color="appbarColor" sx={{color:"white"}} onClick={() => handleClick(email,password,name)}>Register</Button>
+          <TextField label="confirm password" type="password" value={confirmPwd} onChange={(e) => setConfirmPwd(e.target.value)} />
+          <Button variant='contained' color="appbarColor" sx={{color:"white"}} onClick={handleClick}>Register</Button>
         </Stack>
       </Container>
   )

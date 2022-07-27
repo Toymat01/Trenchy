@@ -2,7 +2,6 @@ import { Lock } from '@mui/icons-material'
 import { Box, Button, Container, Stack, TextField, Typography } from '@mui/material'
 import React, { useState} from 'react'
 import { useNavigate } from 'react-router-dom';
-// import PropTypes from 'prop-types'
 import useToken from './useToken';
 
 
@@ -10,29 +9,31 @@ import useToken from './useToken';
  
 
 const Login = () => {
-const [name, setName] = useState('');
+const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 const navigate = useNavigate();
-const { setToken} = useToken()
+const { setToken } = useToken()
+
 
 
   const axios = require("axios");
   const handleClick = () =>{
-    const user = {name, password}
+    const user = {email, password}
     axios.post('https://trenchy-api.herokuapp.com/auth/signin/',{
       headers:{'Content-Type': 'application.json'},
       body:JSON.stringify(user),
-      name:name,
+      email:email,
       password:password
     })
     .then((res) =>{
-      setToken(res.data.checkUser)
-        navigate('/dashboard')
+      setToken(res.data.jwt_token)
+      navigate('/dashboard')
     })
-    .catch((err) =>{
+    .catch(() =>{
       alert('credentials does not exist')
     })
   }
+
 
   return (
        <Container>
@@ -41,7 +42,7 @@ const { setToken} = useToken()
             <Lock />
             <Typography variant='h5' component="div">Login</Typography>
           </Box>
-          <TextField label="Email" type="email" value={name} onChange={e => setName(e.target.value)}/>
+          <TextField label="Email" type="email" value={email} onChange={e => setEmail(e.target.value)}/>
           <TextField label="password" type="password" value={password} onChange={e => setPassword(e.target.value)} />
           <Button variant='contained' color="appbarColor" sx={{color:"white"}} onClick={ handleClick}>Login</Button>
         </Stack>
@@ -50,8 +51,3 @@ const { setToken} = useToken()
 }
 
 export default Login
-
-
-// Login.propTypes = {
-//   setToken: PropTypes.func.isRequired
-// };

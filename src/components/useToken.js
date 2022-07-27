@@ -22,6 +22,6 @@ export default function useToken() {
     setToken: saveToken,
     token,
     getToken,
-    removeToken
+    removeToken,
   }
 }

@@ -1,13 +1,14 @@
 import {  AccountBox, AccountCircle,  Feed,   Home, Message, PostAdd, Save, Settings,  SpaRounded, } from "@mui/icons-material"
 import { AppBar,  Avatar,  Box,  Divider,Drawer,IconButton,    List,    ListItem,    ListItemIcon,    ListItemText,    MenuItem,   MenuList,   Toolbar, Typography } from "@mui/material"
-import { useState } from "react"
+import {  useState } from "react"
 import { useStyle} from "./Style"
 import { useNavigate } from "react-router-dom"
+import useToken from "../components/useToken"
 
 
 
-
-const accountMenu =[
+// Menu items
+const accountMenu1 =[
   {
     name:'Sign Up',
     path:'/signup',
@@ -17,6 +18,43 @@ const accountMenu =[
     path:'/login',
   }
 ]
+const accountMenu2 = [
+  {
+    name:'Logout',
+  }
+]
+
+const drawerItems =[
+  {
+    name:'Profile',
+    path:'/dashboard',
+    icon:<AccountBox />
+  },
+  {
+    name:'Feeds',
+    path:'/',
+    icon:<Feed />
+  },
+  {
+    name:'Message',
+    path:'/',
+    icon:<Message />
+  },
+  {
+    name:'Saved Posts',
+    path:'/',
+    icon:<Save />
+  },
+  {
+    name:'Settings',
+    path:'/',
+    icon:<Settings />
+  },
+
+]
+
+
+
 
 const Navbar = ({children}) => {
 
@@ -24,6 +62,8 @@ const Navbar = ({children}) => {
   const classes = useStyle();
   const navigate = useNavigate()
   const [open, setOpen] = useState(false);
+  const {token, removeToken} = useToken();
+  const reload = () => { window.location.reload() }
  
   const handleDrawerOpen = () =>{
     setOpen(true)
@@ -32,40 +72,12 @@ const Navbar = ({children}) => {
     setOpen(false)
   }
 
-
-  const drawerItems =[
-    {
-      name:'Profile',
-      path:'/',
-      icon:<AccountBox />
-    },
-    {
-      name:'Feeds',
-      path:'/',
-      icon:<Feed />
-    },
-    {
-      name:'Message',
-      path:'/',
-      icon:<Message />
-    },
-    {
-      name:'Saved Posts',
-      path:'/',
-      icon:<Save />
-    },
-    {
-      name:'Settings',
-      path:'/',
-      icon:<Settings />
-    },
-
-  ]
-
-
-
-   
-
+  const handleLogout = () => {
+    removeToken();
+    navigate('/login')
+    reload();
+  }
+  
   return (
         <>
               <AppBar  position="fixed"  sx={{ top: 'auto', bottom: 0, }} color="footerColor">
@@ -88,8 +100,13 @@ const Navbar = ({children}) => {
                           <AccountCircle />
                         </IconButton>
                         <Box className={profileOpen ? classes.profileOpen : classes.profileClose}>
-                            {accountMenu.map(item => (
-                              <MenuList key={item.name} onClick={()=> navigate(item.path)}>
+                            {accountMenu1.map(item => (
+                              <MenuList key={item.name} onClick={()=> navigate(item.path)} className={token ? classes.menu : null}>
+                                <MenuItem>{item.name}</MenuItem>
+                              </MenuList>
+                            ))}
+                            {accountMenu2.map(item => (
+                              <MenuList key={item.name} onClick={handleLogout} className={!token ? classes.menu : null}>
                                 <MenuItem>{item.name}</MenuItem>
                               </MenuList>
                             ))}
@@ -129,7 +146,7 @@ const Navbar = ({children}) => {
                         <ListItemText>{item.name}</ListItemText>
                       </ListItem>
                     ))}
-                </List>
+                </List>      
               </Drawer>
               <Box className={classes.page}>
                 {children}
