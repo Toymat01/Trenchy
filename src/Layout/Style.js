@@ -88,6 +88,9 @@ const useStyle = makeStyles((theme) =>{
     dashBoardAvatar:{
       position:'absolute',
       top:'-100px'
+    },
+    toolbar:{
+      display:'none'
     }
   }
 })

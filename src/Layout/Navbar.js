@@ -1,4 +1,4 @@
-import {  AccountBox, AccountCircle,  Feed,   Home, Message, PostAdd, Save, Settings,  SpaRounded, } from "@mui/icons-material"
+import {  AccountBox, AccountCircle,  Feed,   Home,  PostAdd,   SpaRounded, } from "@mui/icons-material"
 import { AppBar,  Avatar,  Box,  Divider,Drawer,IconButton,    List,    ListItem,    ListItemIcon,    ListItemText,    MenuItem,   MenuList,   Toolbar, Typography } from "@mui/material"
 import {  useState } from "react"
 import { useStyle} from "./Style"
@@ -32,25 +32,9 @@ const drawerItems =[
   },
   {
     name:'Feeds',
-    path:'/',
+    path:'/posts',
     icon:<Feed />
   },
-  {
-    name:'Message',
-    path:'/',
-    icon:<Message />
-  },
-  {
-    name:'Saved Posts',
-    path:'/',
-    icon:<Save />
-  },
-  {
-    name:'Settings',
-    path:'/',
-    icon:<Settings />
-  },
-
 ]
 
 
@@ -80,9 +64,9 @@ const Navbar = ({children}) => {
   
   return (
         <>
-              <AppBar  position="fixed"  sx={{ top: 'auto', bottom: 0, }} color="footerColor">
-                <Toolbar  className={classes.footer}>
-                    <Box >
+              <AppBar  position="fixed"  sx={{ top: 'auto', bottom: 0,}} color="footerColor"> 
+                <Toolbar className={classes.footer}>
+                    <Box className={!token ? classes.menu : null}>
                         <IconButton color="inherit" onClick = {()=> navigate('/')}>
                           <Home/>
                         </IconButton>
@@ -114,13 +98,17 @@ const Navbar = ({children}) => {
                       </Box> 
                   </Toolbar>
                 </AppBar>
-                <AppBar color="appbarColor" elevation={0}>
-                  <Toolbar className={classes.appbar}>
-                      <IconButton onClick={handleDrawerOpen}>
-                        <SpaRounded sx={{color:"white"}}/>
-                      </IconButton>
-                      <Box sx={{flexGrow:1}}/>
-                        <Typography sx={{fontFamily:'cursive'}}>TRENCHY</Typography>
+                <AppBar color="appbarColor" elevation={0} >
+                  <Toolbar className={classes.appbar}  >
+                      <Box  className={!token ? classes.menu : null}>
+                        <IconButton onClick={handleDrawerOpen} >
+                          <SpaRounded sx={{color:"white"}}/>
+                        </IconButton>
+                      </Box>
+                      <Box sx={{flexGrow:1}} />
+                      <Box  className={!token ? classes.menu : null}>
+                          <Typography sx={{fontFamily:'cursive'}}>TRENCHY</Typography>
+                      </Box>
                   </Toolbar>
                 </AppBar>
                 <Drawer 
