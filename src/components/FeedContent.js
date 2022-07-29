@@ -1,5 +1,5 @@
 import { Autorenew,  CommentOutlined,  Favorite,  Send } from '@mui/icons-material'
-import {  Avatar, Divider, IconButton,  InputBase,  Typography} from '@mui/material'
+import {  Avatar, CircularProgress, Divider, IconButton,  InputBase,  Stack,  Typography} from '@mui/material'
 import { Container,Box  } from '@mui/system'
 import { useParams } from 'react-router-dom'
 import { useStyle } from '../Layout/Style'
@@ -13,7 +13,19 @@ const FeedContent = () => {
   const {post,isLoading, error} = useFetch(`https://trenchy-api.herokuapp.com/post/`+id)
 
 
-    return (
+
+if(isLoading){
+  return(
+    <Stack className={classes.loader}>
+      <Box>
+        <CircularProgress color='appbarColor' sx={{margin:'5px 30px'}}/>
+        <Typography>fetching post..</Typography>
+      </Box>
+    </Stack>
+  )
+}
+
+ return (
       <Container className={classes.feedPage}>
           <Box sx={{ display:'flex', marginTop:'5px', position:'fixed', bottom:55.5, background:'white',width:'100%', left:0, right:0, zIndex:1}}>
               <InputBase   placeholder='Dig your reply' className={classes.feedInput} multiline  />
@@ -21,7 +33,6 @@ const FeedContent = () => {
                 <Send/>
               </IconButton>
           </Box>
-            {isLoading && <Typography>Fetching post...</Typography>}
             {error && <Typography>{error}</Typography>}
             {post && (
               <>
@@ -50,9 +61,9 @@ const FeedContent = () => {
               <Typography>5 quotes</Typography>
             </IconButton>
           <Divider />
-        <Box sx={{margin:'10px 0'}}>
-          <Comments />
-        </Box>
+          <Box sx={{margin:'10px 0'}}>
+            <Comments />
+          </Box>
       </Container>
     )
   }

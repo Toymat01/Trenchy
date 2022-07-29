@@ -1,33 +1,23 @@
-import {  Divider, Stack, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react'
-import useToken from './useToken';
+import {  Avatar, Divider, Stack, Typography } from '@mui/material';
 import Login from './Login'
 import { Box, Container } from '@mui/system';
+import useFetch from '../useFetch';
+import {useStyle} from '../Layout/Style'
 
 
-const axios = require('axios')
 const Dashboard  = () => {
-  const [user, setUser] = useState(null)
-  const { token} =useToken();
-
-// getting current user
-  useEffect(() => {
-      axios.get('https://trenchy-api.herokuapp.com/auth/profile',{
-        headers:{'Authorization': `Bearer ${token}`}
-      })
-      .then((res) =>{
-        setUser(res.data.this_user)
-      })
-      .catch((err) => console.log(err))
-  },[token]);
+  const {user} = useFetch('https://trenchy-api.herokuapp.com/auth/profile')
+  const classes = useStyle();
 
 if(!user){
   return(<Login />)
 }
-      return (
+   
+return (
         <Container>
           <Stack>
-            <img src = '/img/cartoon.jpeg' alt='user' />
+            <img src='/img/iphone.jpg' alt='iphone' styles={{position:'relative', width:'100%'}}/>
+            <Avatar src='/img/cartoon/jpeg' className={classes.dashBoardAvatar} />
             <Box sx={{display:'flex', alignItems:'center'}}>
              <Typography>@</Typography>
               <Typography variant='h6' componet='div'>{user.name.toUpperCase()}</Typography>

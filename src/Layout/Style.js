@@ -78,6 +78,16 @@ const useStyle = makeStyles((theme) =>{
       border:'solid 2px #fff5e7',
       borderRadius:'20px',
       padding:'5px'
+    },
+    loader:{
+      display:'flex',
+      height:'50vh',
+      justifyContent:'center',
+      alignItems:'center'
+    },
+    dashBoardAvatar:{
+      position:'absolute',
+      top:'-100px'
     }
   }
 })

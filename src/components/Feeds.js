@@ -1,5 +1,5 @@
 import { AutorenewOutlined,  CommentOutlined, FavoriteOutlined, MusicNote, Photo,  Send,  VideoCameraFront } from '@mui/icons-material'
-import { Avatar, Box, Card, CardActions, CardContent, CardHeader, CardMedia, Divider, IconButton, Modal, Paper, TextField, Typography } from '@mui/material'
+import { Avatar, Box, Card, CardActions, CardContent, CardHeader, CardMedia, CircularProgress, Divider, IconButton, Modal, Paper, Stack, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useStyle } from '../Layout/Style'
@@ -22,13 +22,21 @@ const Feeds = () => {
     setModal(false)
   }
 
-
+if(isLoading){
+  return(
+    <Stack className={classes.loader}>
+      <Box>
+        <CircularProgress color='appbarColor' sx={{margin:'5px 30px'}}/>
+        <Typography>fetching posts..</Typography>
+      </Box>
+    </Stack>
+  )
+}
 
   return (
     <div>
       <Box > 
       {error && <Typography>{error}</Typography>}
-      {isLoading && <Typography>Fetching posts...</Typography>}
       {posts && posts.map(post => ( 
             <Card sx={{borderRadius:6, margin:'10px 0'}}  key={post._id}>
                     <div  key={post.modified_date} onClick={() => navigate(`/posts/${post._id}`)}>
