@@ -27,7 +27,7 @@ const { setToken } = useToken()
     })
     .then((res) =>{
       setToken(res.data.jwt_token)
-      navigate('/dashboard')
+      navigate('/posts')
     })
     .catch(() =>{
       alert('credentials does not exist')

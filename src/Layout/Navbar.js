@@ -58,7 +58,7 @@ const Navbar = ({children}) => {
 
   const handleLogout = () => {
     removeToken();
-    navigate('/login')
+    navigate('/dashboard')
     reload();
   }
   
