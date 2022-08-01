@@ -6,10 +6,11 @@ import { makeStyles } from "@mui/styles"
 
 
 
+
 const theme = createTheme({
   palette: {
     appbarColor:{
-      main:"#5b6260"
+      main:"#9d8466"
     },
     footerColor:{
       main:"#fdfffc"
@@ -87,11 +88,9 @@ const useStyle = makeStyles((theme) =>{
     },
     dashBoardAvatar:{
       position:'absolute',
-      top:'-100px'
+      top:'-20px',
+      width:'100%'
     },
-    toolbar:{
-      display:'none'
-    }
   }
 })
 

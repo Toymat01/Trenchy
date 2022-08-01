@@ -1,4 +1,3 @@
-import {  Lock } from '@mui/icons-material'
 import { Button, Stack, TextField, Typography } from '@mui/material'
 import { Box, Container } from '@mui/system'
 import React, {  useState } from 'react'
@@ -32,7 +31,6 @@ const handleClick =() =>{
       <Container>
         <Stack spacing={2} sx={{marginTop:10}}>
           <Box sx={{display:"flex", justifyContent:"center"}}>
-            <Lock />
             <Typography variant='h5' component="div">Register</Typography>
           </Box>
           <TextField  label="Name"  value={name} onChange={(e) =>setName(e.target.value)}/>

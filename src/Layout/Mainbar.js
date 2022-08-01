@@ -1,5 +1,8 @@
-import { Box,  Stack } from '@mui/material'
+import { Box} from '@mui/material'
 import Feeds from '../components/Feeds'
+import SpeedDial from '@mui/material/SpeedDial';
+import SpeedDialIcon from '@mui/material/SpeedDialIcon';
+import EditIcon from '@mui/icons-material/Edit';
 
 import { useStyle } from './Style'
 
@@ -9,16 +12,15 @@ const Mainbar = () => {
 
 
   return (
-            <Stack> 
-              {/* <Box sx={{ position:'fixed', top:53,left:0, width:'100%', textAlign:'center', padding:'10px 0',zIndex:1, background:'#f6f7f8', }}>
-                <Typography variant="h5">FEEDS</Typography>
-                <Divider light={false}/>
-              </Box> */}
-              <Box className={classes.page}>
-              <Feeds />
-              </Box>
-            </Stack> 
-          
+              <Box className={classes.page} sx={{position:'relative'}}>
+                <Feeds />
+                <SpeedDial
+                  ariaLabel="SpeedDial openIcon example"
+                  sx={{ position: 'fixed', bottom:45, right:5,  '& .MuiFab-primary': { backgroundColor: '#9d8466', color: 'white' } }}
+                  icon={<SpeedDialIcon openIcon={<EditIcon />}  />}
+                >
+                </SpeedDial>
+              </Box>        
   )
 }
 

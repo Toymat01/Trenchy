@@ -16,8 +16,8 @@ if(!user){
 return (
         <Container>
           <Stack>
-            <img src='/img/iphone.jpg' alt='iphone' styles={{position:'relative', width:'100%'}}/>
-            <Avatar src='/img/cartoon/jpeg' className={classes.dashBoardAvatar} />
+            <img src='/img/iphone.jpg' alt='iphone' className='img'/>
+            <Avatar src='/img/cartoon.jpeg' className={classes.dashBoardAvatar} />
             <Box sx={{display:'flex', alignItems:'center'}}>
              <Typography>@</Typography>
               <Typography variant='h6' componet='div'>{user.name.toUpperCase()}</Typography>

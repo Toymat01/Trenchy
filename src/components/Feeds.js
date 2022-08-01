@@ -6,6 +6,7 @@ import { useStyle } from '../Layout/Style'
 import useFetch from '../useFetch'
 
 
+
 const Feeds = () => {
   const classes = useStyle()
   const navigate = useNavigate()
@@ -34,8 +35,8 @@ if(isLoading){
 }
 
   return (
-    <div>
-      <Box > 
+    <div >
+      <Box sx={{position:'relative'}}> 
       {error && <Typography>{error}</Typography>}
       {posts && posts.map(post => ( 
             <Card sx={{borderRadius:6, margin:'10px 0'}}  key={post._id}>
@@ -65,7 +66,7 @@ if(isLoading){
                       <Typography>5</Typography>
                     </CardActions>
             </Card>
-      ))}     
+      ))}    
       </Box>
       <Divider sx={{margin:'10px 0'}}  />
       <Modal
