@@ -34,6 +34,9 @@ if(isLoading){
   )
 }
 
+if(posts.length === 0){
+  return(<Typography>You currently have no posts, click on the buttom right icon to add post.</Typography>)
+}
   return (
     <div >
       <Box sx={{position:'relative'}}> 
